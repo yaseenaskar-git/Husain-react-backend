@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const db = require("./database/db");
+const authRoutes = require("./routes/auth");
 
 // Initialize Express application
 const app = express();
@@ -25,7 +26,10 @@ app.get("/api/health", (req, res) => {
     });
 });
 
+app.use("/api/auth", authRoutes);
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
