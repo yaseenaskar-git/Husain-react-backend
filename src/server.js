@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 const db = require("./database/db");
 const authRoutes = require("./routes/auth");
+const protectedRoutes = require("./routes/protected");
 
 // Initialize Express application
 const app = express();
@@ -27,6 +28,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/protected", protectedRoutes);
 
 // Start server
 app.listen(PORT, () => {
